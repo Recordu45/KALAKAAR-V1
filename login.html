@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#050507">
+
+    <title>Kalakaar | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-glow {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #8b5cff;
+            filter: blur(130px);
+            opacity: .13;
+            top: -100px;
+            right: -100px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+            padding: 30px 22px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 26px;
+            background: rgba(15,15,22,.78);
+            backdrop-filter: blur(25px);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.55),
+                0 0 45px rgba(139,92,255,.10);
+        }
+
+        .auth-brand {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .auth-logo {
+            width: 64px;
+            height: 64px;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            font-family: Orbitron, sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3158,
+                    #8b5cff,
+                    #34d8ff
+                );
+            box-shadow:
+                0 0 30px rgba(255,49,88,.25),
+                0 0 45px rgba(139,92,255,.18);
+        }
+
+        .auth-brand h1 {
+            font-family: Orbitron, sans-serif;
+            font-size: 23px;
+            margin: 15px 0 6px;
+        }
+
+        .auth-brand p {
+            color: #858796;
+            font-size: 12px;
+        }
+
+        .auth-form {
+            display: grid;
+            gap: 13px;
+        }
+
+        .auth-input {
+            width: 100%;
+            height: 52px;
+            padding: 0 15px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.10);
+            outline: none;
+            color: white;
+            background: rgba(255,255,255,.045);
+        }
+
+        .auth-input:focus {
+            border-color: rgba(139,92,255,.65);
+            box-shadow: 0 0 20px rgba(139,92,255,.10);
+        }
+
+        .auth-button {
+            height: 52px;
+            border: 0;
+            border-radius: 14px;
+            font-weight: 800;
+            color: #08080b;
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #cfd1ff
+            );
+            margin-top: 5px;
+        }
+
+        .auth-message {
+            min-height: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #ff829a;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #858796;
+            font-size: 12px;
+        }
+
+        .auth-switch button {
+            border: 0;
+            background: none;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .auth-back {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #777987;
+            text-decoration: none;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-glow"></div>
+
+    <div class="auth-card">
+
+        <div class="auth-brand">
+
+            <div class="auth-logo">
+                K
+            </div>
+
+            <h1>
+                Welcome to Kalakaar
+            </h1>
+
+            <p>
+                Music • Reels • Create
+            </p>
+
+        </div>
+
+
+        <form
+            class="auth-form"
+            id="loginForm"
+        >
+
+            <input
+                class="auth-input"
+                id="email"
+                type="email"
+                placeholder="Email address"
+                required
+            >
+
+            <input
+                class="auth-input"
+                id="password"
+                type="password"
+                placeholder="Password"
+                minlength="6"
+                required
+            >
+
+            <button
+                class="auth-button"
+                type="submit"
+            >
+                LOGIN
+            </button>
+
+        </form>
+
+
+        <div
+            class="auth-message"
+            id="authMessage"
+        ></div>
+
+
+        <div class="auth-switch">
+
+            Don't have an account?
+
+            <button
+                type="button"
+                onclick="registerUser()"
+            >
+                Create account
+            </button>
+
+        </div>
+
+
+        <a
+            class="auth-back"
+            href="index.html"
+        >
+            ← Continue as guest
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="config.js"></script>
+
+<script src="auth.js"></script>
+
+</body>
+</html>
