@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080808" />
+  <title>Kalakaar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">K</div>
+        <div>
+          <h1>Kalakaar</h1>
+          <span>Music • Reels • Create</span>
+        </div>
+      </div>
+      <button class="icon-btn" aria-label="Notifications">♡</button>
+    </header>
+
+    <main id="app">
+      <section class="screen active" id="homeScreen">
+        <div class="hero">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="pill">KALAKAAR ORIGINAL</span>
+            <h2>Apni vibe.<br>Apna music.<br>Apni reel.</h2>
+            <p>Discover sounds, watch reels and create your own style.</p>
+            <button class="primary-btn" onclick="openCreate()">＋ Create Reel</button>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h3>Trending Reels</h3>
+          <button onclick="showToast('More reels coming soon')">See all</button>
+        </div>
+
+        <div class="reel-row">
+          <article class="reel-card" onclick="playReel(this)">
+            <div class="reel-cover cover-one"><span>▶</span></div>
+            <strong>Midnight Vibe</strong>
+            <small>@kalakaar</small>
+          </article>
+          <article class="reel-card" onclick="playReel(this)">
+            <div class="reel-cover cover-two"><span>▶</span></div>
+            <strong>Desi Beat</strong>
+            <small>@creator01</small>
+          </article>
+          <article class="reel-card" onclick="playReel(this)">
+            <div class="reel-cover cover-three"><span>▶</span></div>
+            <strong>Lo-fi Mood</strong>
+            <small>@musiclover</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="reelsScreen">
+        <div class="reels-feed">
+          <article class="full-reel">
+            <div class="reel-bg bg-a"></div>
+            <div class="reel-info">
+              <b>@kalakaar_creator</b>
+              <p>Feel the beat. Create your moment. 🎵</p>
+              <span>♪ Original Kalakaar Sound</span>
+            </div>
+            <div class="reel-actions">
+              <button onclick="like(this)">♡<small>1.2K</small></button>
+              <button onclick="showToast('Comments opened')">◯<small>234</small></button>
+              <button onclick="showToast('Share menu opened')">↗<small>Share</small></button>
+              <button onclick="save(this)">▱<small>Save</small></button>
+            </div>
+          </article>
+          <article class="full-reel">
+            <div class="reel-bg bg-b"></div>
+            <div class="reel-info">
+              <b>@desibeats</b>
+              <p>Turn up the volume 🔥</p>
+              <span>♪ Desi Beat</span>
+            </div>
+            <div class="reel-actions">
+              <button onclick="like(this)">♡<small>846</small></button>
+              <button onclick="showToast('Comments opened')">◯<small>92</small></button>
+              <button onclick="showToast('Share menu opened')">↗<small>Share</small></button>
+              <button onclick="save(this)">▱<small>Save</small></button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="musicScreen">
+        <div class="page-title">
+          <span>DISCOVER</span>
+          <h2>Music</h2>
+        </div>
+        <div class="search-box">⌕ <input placeholder="Search songs, artists, sounds..." /></div>
+
+        <div class="chips">
+          <button class="chip active">Trending</button>
+          <button class="chip">Hindi</button>
+          <button class="chip">Bhojpuri</button>
+          <button class="chip">Punjabi</button>
+          <button class="chip">Lo-fi</button>
+        </div>
+
+        <div class="track-list">
+          <div class="track" onclick="playTrack(this, 'Midnight Drive')">
+            <div class="track-art art-one">♪</div>
+            <div class="track-meta"><b>Midnight Drive</b><small>Kalakaar Originals</small></div>
+            <button>▶</button>
+          </div>
+          <div class="track" onclick="playTrack(this, 'Desi Beat')">
+            <div class="track-art art-two">♪</div>
+            <div class="track-meta"><b>Desi Beat</b><small>Kalakaar Sounds</small></div>
+            <button>▶</button>
+          </div>
+          <div class="track" onclick="playTrack(this, 'Lo-fi Rain')">
+            <div class="track-art art-three">♪</div>
+            <div class="track-meta"><b>Lo-fi Rain</b><small>Night Creator</small></div>
+            <button>▶</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="createScreen">
+        <div class="page-title">
+          <span>CREATE</span>
+          <h2>Make a Reel</h2>
+        </div>
+        <div class="create-card">
+          <div class="upload-icon">＋</div>
+          <h3>Upload your video</h3>
+          <p>Choose a video from your phone and add music, text and effects.</p>
+          <label class="primary-btn upload-btn">
+            Select Video
+            <input type="file" accept="video/*" onchange="handleVideo(this)" hidden />
+          </label>
+          <div id="selectedFile"></div>
+        </div>
+        <div class="editor-tools">
+          <button onclick="showToast('Music picker opened')">🎵<span>Music</span></button>
+          <button onclick="showToast('Text tool opened')">T<span>Text</span></button>
+          <button onclick="showToast('Effects opened')">✦<span>Effects</span></button>
+          <button onclick="showToast('Filters opened')">◐<span>Filter</span></button>
+        </div>
+      </section>
+
+      <section class="screen" id="profileScreen">
+        <div class="profile-head">
+          <div class="avatar">K</div>
+          <div>
+            <h2>Kalakaar User</h2>
+            <p>@yourusername</p>
+          </div>
+          <button class="edit-btn" onclick="showToast('Edit profile')">Edit</button>
+        </div>
+        <div class="stats">
+          <div><b>0</b><span>Reels</span></div>
+          <div><b>0</b><span>Followers</span></div>
+          <div><b>0</b><span>Following</span></div>
+        </div>
+        <div class="profile-empty">
+          <div>✦</div>
+          <h3>Your creations will appear here</h3>
+          <p>Create your first reel and start building your Kalakaar profile.</p>
+          <button class="primary-btn" onclick="openCreate()">Create Reel</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="mini-player" id="miniPlayer">
+      <div class="mini-art">♪</div>
+      <div><b id="trackName">Nothing playing</b><small>Kalakaar</small></div>
+      <button onclick="togglePlayer()">▶</button>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-screen="homeScreen" onclick="navigate('homeScreen', this)">⌂<span>Home</span></button>
+      <button class="nav-item" data-screen="reelsScreen" onclick="navigate('reelsScreen', this)">▶<span>Reels</span></button>
+      <button class="create-nav" onclick="openCreate()">＋</button>
+      <button class="nav-item" data-screen="musicScreen" onclick="navigate('musicScreen', this)">♫<span>Music</span></button>
+      <button class="nav-item" data-screen="profileScreen" onclick="navigate('profileScreen', this)">◎<span>Profile</span></button>
+    </nav>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
